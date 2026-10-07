@@ -1,0 +1,40 @@
+-- Histórico de envios e mensagens agendadas (migrado do SQLite legado).
+CREATE TABLE IF NOT EXISTS envios (
+  id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  quando INT UNSIGNED NOT NULL,
+  origem VARCHAR(30) NOT NULL,
+  jid VARCHAR(100) NOT NULL,
+  tipo VARCHAR(30) NOT NULL,
+  resumo VARCHAR(300) NULL,
+  ok TINYINT(1) NOT NULL,
+  erro TEXT NULL,
+  msg_id VARCHAR(100) NULL,
+  instancia VARCHAR(40) NOT NULL DEFAULT 'lembretes',
+  usuario_id INT UNSIGNED NULL,
+  usuario VARCHAR(40) NULL,
+  KEY ix_envios_inst_quando (instancia, quando),
+  KEY ix_envios_quando (quando),
+  KEY ix_envios_msg (msg_id),
+  KEY ix_envios_user (usuario_id, quando)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+CREATE TABLE IF NOT EXISTS agendadas (
+  id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  jid VARCHAR(100) NOT NULL,
+  tipo VARCHAR(30) NOT NULL,
+  texto TEXT NULL,
+  arquivo VARCHAR(100) NULL,
+  mime VARCHAR(100) NULL,
+  nome VARCHAR(200) NULL,
+  quando INT UNSIGNED NOT NULL,
+  status VARCHAR(20) NOT NULL DEFAULT 'pendente',
+  erro TEXT NULL,
+  criado INT UNSIGNED NOT NULL,
+  enviado_em INT UNSIGNED NULL,
+  msg_id VARCHAR(100) NULL,
+  instancia VARCHAR(40) NOT NULL DEFAULT 'lembretes',
+  usuario_id INT UNSIGNED NULL,
+  usuario VARCHAR(40) NULL,
+  assinatura VARCHAR(80) NULL,
+  KEY ix_ag_status (status, quando),
+  KEY ix_ag_inst (instancia, status, quando)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;

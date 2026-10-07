@@ -1,0 +1,84 @@
+/* Configurações (cfg-) — mobile-first */
+.cfg-raiz{display:flex;flex-direction:column;gap:14px;max-width:760px}
+.cfg-sk{height:120px}
+.cfg-erro{text-align:center;padding:28px 18px}
+.cfg-erro i{font-size:2rem;color:var(--verm);display:block;margin-bottom:8px}
+.cfg-erro p{margin:0 0 14px}
+.cfg-sec .ch{font-size:1.02rem}
+.cfg-p{margin:0 0 4px}
+.cfg-vivo{margin-left:auto}
+
+/* Conexão */
+.cfg-estado{display:flex;flex-direction:column;gap:8px;align-items:flex-start;margin-bottom:14px}
+.cfg-selo{font-size:1.05rem;padding:10px 18px}
+.cfg-qr{background:#f8faff;border:1px dashed #c7dafc;border-radius:var(--raio);padding:16px;margin-bottom:14px;text-align:center}
+.cfg-qr[hidden]{display:none}
+.cfg-qr-img{width:100%;max-width:280px;aspect-ratio:1;background:#fff;padding:10px;border-radius:12px;box-shadow:var(--sombra);image-rendering:pixelated}
+.cfg-qr-sk{width:240px;height:240px;margin:0 auto;max-width:100%}
+.cfg-qr-fail{color:var(--verm);padding:10px}
+.cfg-passos{text-align:left;margin:14px auto 6px;padding-left:22px;max-width:360px;font-size:.92rem}
+.cfg-passos li{margin-bottom:4px}
+.cfg-botoes{display:flex;gap:10px;flex-wrap:wrap}
+.cfg-botoes>button{flex:1 1 200px}
+.cfg-dica{font-size:.8rem;margin-top:8px}
+.cfg-dica-alerta{color:var(--amar);font-weight:600}
+
+/* Perfil */
+.cfg-perfil{display:flex;align-items:center;gap:14px;margin-bottom:6px}
+.cfg-foto{width:68px;height:68px;border-radius:50%;object-fit:cover;flex:none;background:var(--azul-bg)}
+.cfg-foto-ini{display:grid;place-items:center;font-weight:800;font-size:1.4rem;color:var(--cor-primaria)}
+.cfg-campo{display:flex;gap:8px}
+.cfg-campo input{flex:1;min-width:0}
+.cfg-campo button{flex:none}
+@media(max-width:480px){.cfg-campo{flex-direction:column}.cfg-campo button{width:100%}}
+
+/* Comportamento */
+.cfg-aviso{display:flex;gap:10px;align-items:flex-start;background:var(--amar-bg);color:#8a5a0c;border:1px solid #f3d9a4;border-radius:var(--raio);padding:11px 13px;font-size:.88rem;font-weight:500;margin-bottom:6px}
+.cfg-aviso i{margin-top:3px}
+.cfg-sw{display:flex;align-items:center;gap:12px;margin:0;padding:14px 2px;border-bottom:1px solid var(--cor-borda);cursor:pointer;min-height:64px;font-weight:400}
+.cfg-sw-ic{width:38px;height:38px;border-radius:50%;background:var(--azul-bg);color:var(--cor-primaria);display:grid;place-items:center;flex:none}
+.cfg-sw-tx{flex:1;min-width:0;display:flex;flex-direction:column}
+.cfg-sw-tx b{font-size:.95rem}
+.cfg-sw-tx small{color:var(--cor-texto-sec);font-size:.78rem;line-height:1.3}
+.cfg-sw input{position:absolute;opacity:0;width:1px;height:1px}
+.cfg-sw-trilho{width:54px;height:32px;border-radius:32px;background:#d3d8e0;position:relative;flex:none;transition:background .2s}
+.cfg-sw-trilho i{position:absolute;top:3px;left:3px;width:26px;height:26px;border-radius:50%;background:#fff;box-shadow:0 2px 5px rgba(0,0,0,.3);transition:transform .2s}
+.cfg-sw input:checked~.cfg-sw-trilho{background:var(--verde)}
+.cfg-sw input:checked~.cfg-sw-trilho i{transform:translateX(22px)}
+.cfg-sw input:focus-visible~.cfg-sw-trilho{outline:2px solid var(--cor-primaria);outline-offset:2px}
+.cfg-msgcall{padding:4px 2px 14px;border-bottom:1px solid var(--cor-borda)}
+.cfg-msgcall[hidden]{display:none}
+.cfg-salvar{margin-top:16px}
+
+/* Segurança */
+.cfg-olho{touch-action:manipulation}
+.pw .cfg-olho{width:46px;min-height:0}
+.cfg-forca{display:flex;align-items:center;gap:10px;margin-top:8px;font-size:.8rem}
+.cfg-forca-barra{flex:1;height:7px;border-radius:7px;background:#e6ebf3;overflow:hidden}
+.cfg-forca-barra i{display:block;height:100%;width:0;border-radius:7px;transition:width .25s,background .25s}
+.cfg-forca-barra i.f1,.cfg-forca-barra i.f2{background:var(--verm)}
+.cfg-forca-barra i.f3{background:#e9a319}
+.cfg-forca-barra i.f4{background:var(--verde)}
+.msg-campo[hidden]{display:none}
+
+/* Sobre */
+.cfg-versoes{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px}
+.cfg-versoes>div{background:#f8faff;border-radius:var(--raio);padding:12px;display:flex;flex-direction:column}
+.cfg-versoes b{font-size:1.1rem}
+.cfg-versoes .mut{font-size:.78rem}
+.cfg-cred{text-align:center;margin-top:18px;font-size:.88rem;color:var(--cor-texto-sec)}
+.cfg-cred a{font-weight:700}
+
+.cfg-semperm{font-size:.84rem;color:var(--cor-texto-sec);margin-top:8px}
+.cfg-tipo{margin-top:6px}
+.cfg-sessoes{margin-top:12px;padding:10px 12px;border-radius:10px;background:#e6f7ee;color:#136b3b;font-size:.88rem;animation:entra .3s}
+.cfg-sec input:disabled,.cfg-sw input:disabled+.cfg-sw-trilho{opacity:.55;cursor:not-allowed}
+
+/* Correções: sem estouro lateral e alvos de toque >= 44 px */
+.cfg-raiz,.cfg-sec{min-width:0;max-width:100%}
+.cfg-raiz{overflow-wrap:anywhere}
+.cfg-sw{position:relative;overflow:hidden}
+.cfg-sw input{left:0;top:0}
+.cfg-raiz button{min-height:44px}
+.cfg-cred a{display:inline-flex;align-items:center;min-height:44px;padding:0 6px}
+.cfg-qr-img{max-width:100%}

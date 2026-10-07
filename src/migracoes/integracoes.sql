@@ -1,0 +1,61 @@
+-- Integrações: tokens de API pública, uso, webhooks de saída e seus logs.
+CREATE TABLE IF NOT EXISTS api_tokens (
+  id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  nome VARCHAR(80) NOT NULL,
+  token_hash CHAR(64) NOT NULL UNIQUE,
+  prefixo_visivel VARCHAR(20) NOT NULL,
+  instancia VARCHAR(40) NOT NULL,
+  escopos TEXT NOT NULL,
+  usuario_id INT UNSIGNED NOT NULL,
+  assinatura VARCHAR(80) NOT NULL,
+  limite_min INT UNSIGNED NOT NULL DEFAULT 30,
+  ativo TINYINT(1) NOT NULL DEFAULT 1,
+  criado INT UNSIGNED NOT NULL,
+  ultimo_uso INT UNSIGNED NULL,
+  usos INT UNSIGNED NOT NULL DEFAULT 0,
+  KEY ix_tok_inst (instancia),
+  FOREIGN KEY (usuario_id) REFERENCES usuarios(id) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+CREATE TABLE IF NOT EXISTS api_usos (
+  id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  token_id INT UNSIGNED NOT NULL,
+  ts INT UNSIGNED NOT NULL,
+  acao VARCHAR(30) NOT NULL,
+  ip VARCHAR(45) NULL,
+  ok TINYINT(1) NOT NULL DEFAULT 1,
+  http SMALLINT UNSIGNED NOT NULL DEFAULT 200,
+  detalhe VARCHAR(200) NULL,
+  KEY ix_uso_tok (token_id, ts),
+  FOREIGN KEY (token_id) REFERENCES api_tokens(id) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+CREATE TABLE IF NOT EXISTS webhooks_saida (
+  id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  instancia VARCHAR(40) NOT NULL,
+  nome VARCHAR(80) NOT NULL,
+  url VARCHAR(500) NOT NULL,
+  segredo_cif TEXT NOT NULL,
+  eventos TEXT NOT NULL,
+  ativo TINYINT(1) NOT NULL DEFAULT 1,
+  falhas_seguidas INT UNSIGNED NOT NULL DEFAULT 0,
+  ultimo_status VARCHAR(40) NULL,
+  ultimo_envio INT UNSIGNED NULL,
+  desativado_motivo VARCHAR(120) NULL,
+  criado INT UNSIGNED NOT NULL,
+  criado_por INT UNSIGNED NULL,
+  KEY ix_wso_inst (instancia, ativo)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+CREATE TABLE IF NOT EXISTS webhooks_saida_logs (
+  id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  webhook_id INT UNSIGNED NOT NULL,
+  ts INT UNSIGNED NOT NULL,
+  evento VARCHAR(30) NOT NULL,
+  dedupe CHAR(40) NULL,
+  ok TINYINT(1) NOT NULL DEFAULT 0,
+  http SMALLINT UNSIGNED NULL,
+  tentativas TINYINT UNSIGNED NOT NULL DEFAULT 0,
+  ms INT UNSIGNED NULL,
+  erro VARCHAR(200) NULL,
+  UNIQUE KEY uq_wsol (webhook_id, dedupe),
+  KEY ix_wsol (webhook_id, ts),
+  FOREIGN KEY (webhook_id) REFERENCES webhooks_saida(id) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;

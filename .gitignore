@@ -1,0 +1,15 @@
+# Nunca versionar credenciais, dados ou arquivos de trabalho
+/config.php
+/_dados/config.php
+*.env
+.env*
+_dados/
+PRIMEIRA_SENHA.txt
+*.db
+*.sqlite
+node_modules/
+.deploy.lock
+.versao_site
+.manifest
+*.bak*
+*.log

@@ -1,0 +1,1 @@
+ALTER TABLE notificacoes ADD COLUMN usuario_id INT UNSIGNED NULL AFTER perm;

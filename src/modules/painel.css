@@ -1,0 +1,54 @@
+.painel{display:flex;flex-direction:column;gap:14px;max-width:980px}
+.painel-perfil{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.painel-foto{width:60px;height:60px;font-size:1.2rem;border-radius:50%}
+.painel-perfil-i{display:flex;flex-direction:column;min-width:0;flex:1}
+.painel-nome{font-size:1.1rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.painel-tot{font-size:.78rem;margin-top:2px}
+.painel-stats{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(min-width:760px){.painel-stats{grid-template-columns:repeat(4,1fr)}}
+.painel-stat{padding:14px;position:relative;transition:box-shadow .3s}
+.painel-stat .num{font-variant-numeric:tabular-nums;margin-top:6px}
+.painel-sub{margin-top:6px;display:flex;gap:6px;flex-wrap:wrap}
+.painel-pisca{animation:painel-pisca 1.6s ease}
+@keyframes painel-pisca{0%{box-shadow:0 0 0 3px rgba(37,99,235,.45)}100%{box-shadow:var(--sombra)}}
+.painel-ch{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.painel-bloco{padding:16px}
+.painel-legenda{display:flex;gap:14px;font-size:.8rem;color:var(--cor-texto-sec);margin:6px 0}
+.painel-pt{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px}
+.painel-graf{position:relative;height:210px}
+.painel-graf-erro{padding:14px;text-align:center;color:var(--cor-texto-sec);font-size:.88rem}
+.painel-tab{margin-top:10px;font-size:.88rem;width:100%}
+.painel-tab th[scope=row]{text-align:left;font-weight:500;text-transform:none;letter-spacing:0;font-size:.88rem;color:var(--cor-texto)}
+.painel-tab td{font-variant-numeric:tabular-nums}
+.painel-cap{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.painel-item{display:flex;align-items:center;gap:12px;width:100%;min-height:56px;padding:8px 6px;background:none;border:0;border-bottom:1px solid var(--cor-borda);text-align:left;font:inherit;color:inherit;border-radius:8px;cursor:pointer}
+.painel-item:last-child{border-bottom:0}
+.painel-item:active,.painel-item:hover{background:var(--azul-bg)}
+.painel-item-c{display:flex;flex-direction:column;min-width:0;flex:1}
+.painel-item-c b{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.painel-prev{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:.86rem}
+.painel-eu{color:var(--cor-primaria);font-size:.7rem}
+.painel-hora{font-size:.76rem;flex:none}
+.painel-novo{animation:painel-novo 2s ease}
+@keyframes painel-novo{0%{background:#d9f8e5}100%{background:transparent}}
+.painel-atalhos{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.painel-atalho{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;min-height:76px;padding:10px 6px;background:#fff;border:1px solid var(--cor-borda);border-radius:var(--raio);box-shadow:var(--sombra);font:inherit;font-weight:600;font-size:.8rem;color:var(--cor-texto);text-align:center;cursor:pointer;transition:transform .08s}
+.painel-atalho i{font-size:1.2rem;color:var(--cor-primaria)}
+.painel-atalho:active{transform:scale(.96)}
+.painel-erro{display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center;padding:28px 16px}
+.painel-erro>i{font-size:2rem;color:var(--verm)}
+.painel-sk{display:flex;flex-direction:column;gap:14px}
+.painel-sk-perfil{height:92px;border-radius:var(--raio)}
+.painel-sk-stat{height:96px;border-radius:var(--raio)}
+.painel-sk .painel-stats{gap:12px}
+.painel-sk-graf{height:260px;border-radius:var(--raio)}
+@media(prefers-reduced-motion:reduce){.painel-pisca,.painel-novo{animation:none}}
+.painel-numero{white-space:nowrap;font-size:.9rem}.painel-perfil .badge-status{margin-left:auto}
+
+.painel-clic{cursor:pointer;-webkit-tap-highlight-color:transparent;transition:transform .12s,box-shadow .15s,background .15s;user-select:none}
+.painel-clic:hover{box-shadow:0 4px 14px rgba(37,99,235,.18)}
+.painel-clic:active,.painel-toque{transform:scale(.95);background:var(--azul-bg)}
+.painel-clic:focus-visible{outline:3px solid var(--cor-primaria);outline-offset:2px}
+.painel-clic::after{content:"\f054";font:900 .65rem "Font Awesome 6 Free";position:absolute;right:12px;bottom:12px;color:var(--cor-texto-sec);opacity:.6}
+.painel-sub-b{min-height:28px;display:inline-flex;align-items:center}
+.painel-semperm{padding:26px 12px}

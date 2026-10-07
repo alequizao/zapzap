@@ -1,0 +1,15 @@
+CREATE TABLE IF NOT EXISTS push_assinaturas (
+  id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  usuario_id INT UNSIGNED NOT NULL,
+  endpoint_hash CHAR(64) NOT NULL UNIQUE,
+  endpoint TEXT NOT NULL,
+  p256dh VARCHAR(120) NOT NULL,
+  auth VARCHAR(60) NOT NULL,
+  agente VARCHAR(160) NULL,
+  prefs TEXT NULL,
+  criado INT UNSIGNED NOT NULL,
+  ultimo_ok INT UNSIGNED NULL,
+  falhas INT UNSIGNED NOT NULL DEFAULT 0,
+  KEY ix_push_usr (usuario_id),
+  FOREIGN KEY (usuario_id) REFERENCES usuarios(id) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;

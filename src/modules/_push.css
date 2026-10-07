@@ -1,0 +1,8 @@
+.push-sec { margin: 14px 0 6px; padding: 14px; border: 1px solid #e5e9f2; border-radius: 14px; background: #f8faff; }
+.push-tit { font-weight: 700; font-size: 15px; margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+.push-tit i { color: #2563EB; }
+.push-est { margin-bottom: 10px; }
+.push-bts { display: flex; gap: 8px; flex-wrap: wrap; }
+.push-bts .btn-acao { flex: 1 1 140px; min-height: 44px; }
+.push-full { width: 100%; min-height: 48px; }
+.push-dica { font-size: 13px; line-height: 1.45; margin: 10px 0 0; }

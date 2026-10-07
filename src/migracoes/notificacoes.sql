@@ -1,0 +1,19 @@
+CREATE TABLE IF NOT EXISTS notificacoes (
+  id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  instancia VARCHAR(40) NOT NULL,
+  ts INT UNSIGNED NOT NULL,
+  tipo VARCHAR(20) NOT NULL,
+  titulo VARCHAR(120) NOT NULL,
+  texto VARCHAR(300) NULL,
+  jid VARCHAR(80) NULL,
+  rota VARCHAR(160) NULL,
+  perm VARCHAR(60) NULL,
+  ref VARCHAR(80) NULL,
+  KEY ix_n_inst (instancia, id), KEY ix_n_ts (ts),
+  UNIQUE KEY uq_n_ref (instancia, tipo, ref)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+CREATE TABLE IF NOT EXISTS notificacoes_vistas (
+  usuario_id INT UNSIGNED NOT NULL PRIMARY KEY,
+  ultimo_id BIGINT UNSIGNED NOT NULL,
+  atualizado INT UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
