@@ -75,6 +75,16 @@
 
 No primeiro acesso, o usuário administrador é criado com uma **senha aleatória** gravada em `PRIMEIRA_SENHA.txt` (na pasta privada) — apague o arquivo depois de entrar. Guia completo em [`docs/INSTALACAO.md`](docs/INSTALACAO.md).
 
+## 🗺️ Mapa do código
+
+O repositório traz um **grafo de conhecimento** do código gerado com o [Graphify](https://github.com/Graphify-Labs/graphify): módulos, funções, tabelas e documentos, e como se ligam.
+
+- [`graphify-out/graph.html`](graphify-out/graph.html) — grafo interativo ([abrir no navegador](https://raw.githack.com/alequizao/zapzap/main/graphify-out/graph.html))
+- [`graphify-out/GRAPH_REPORT.md`](graphify-out/GRAPH_REPORT.md) — relatório: hubs, comunidades, conexões surpreendentes e perguntas sugeridas
+- [`graphify-out/graph.json`](graphify-out/graph.json) — dados brutos (para `graphify query`, `path`, `explain`, `affected`)
+
+Para regenerar: `uv tool install graphifyy && graphify install`, depois `/graphify .` no assistente (ou `graphify update .` só para o que mudou).
+
 ## ⚠️ Avisos importantes
 
 - O painel usa a **Evolution API** (conexão não oficial via WhatsApp Web). O WhatsApp pode **restringir ou banir** números que enviem mensagens em massa ou sem consentimento. Use limites conservadores, respeite o opt-out e a LGPD.

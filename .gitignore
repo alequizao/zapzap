@@ -13,3 +13,8 @@ node_modules/
 .manifest
 *.bak*
 *.log
+
+# Mapa do código (graphify): só os produtos finais sobem
+graphify-out/cache/
+graphify-out/.graphify_*
+graphify-out/memory/
